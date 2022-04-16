@@ -20,7 +20,7 @@ const index :React.FC<Props> = ({data}) => {
     description='post'>
       <div className='flex flex-col items-center w-6/12 mx-auto'>
       {data.map(post => {
-        return <div className='my-4'>
+        return <div key={post.id} className='my-4'>
           <Link href={`/taxes/${post.id}`}>
             <h1 className='uppercase font-ArialBlack text-xl cursor-pointer'>{post.title}</h1>
           </Link>
