@@ -1,7 +1,11 @@
 import React from 'react'
 import Layout from '../../components/Layout'
 
-const Post = ({data}) => {
+type Props = {
+    data: any
+}
+
+const Post : React.FC<Props> = ({data}) => {
     console.log(data)
   return (
     <Layout >
@@ -30,7 +34,7 @@ export async function getStaticPaths(){
         console.log(error)
     }
 }
-export async function getStaticProps ({ params }) {
+export const getStaticProps : any = async ({ params }) => {
     try {
       const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
       const data = await res.json()
