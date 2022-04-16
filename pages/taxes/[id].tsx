@@ -25,7 +25,9 @@ export async function getStaticPaths(){
     try {
         const res = await fetch('https://jsonplaceholder.typicode.com/posts')
         const data = await res.json()
-        const paths = data.map(({id}): { params: { id: string } }=> ({ params: { id: `${id}`}}))
+        const paths = data.map(function ({ id }: {id : any}): { params: { id: string} }  {
+                return ({ params: { id: `${id}` } })
+            })
         return {
             paths,
             fallback: false
@@ -34,7 +36,7 @@ export async function getStaticPaths(){
         console.log(error)
     }
 }
-export const getStaticProps : any = async ({ params }) => {
+export const getStaticProps : any = async ({ params }: {params : any}) => {
     try {
       const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
       const data = await res.json()
